@@ -14,8 +14,12 @@ base_url = 'https://stats.nba.com/'
 # ?flag=3&CFID=&CFPARAMS=&PlayerID=203081&TeamID=1610612757&GameID=0021900125&ContextMeasure=FGA&Season=2019-20&SeasonType=Regular%20Season&RangeType=0&StartPeriod=1&EndPeriod=10&StartRange=0&EndRange=28800&section=game&sct=plot
 # Total Points Leaders
 # events/
-endpoint = 'players/traditional/'
-params = '?PerMode=Totals&sort=PTS&dir=-1'
+# endpoint = 'players/traditional/'
+# params = '?PerMode=Totals&sort=PTS&dir=-1'
+
+endpoint = 'game/'
+params = '0021900741/shotchart/'
+
 
 url = base_url + endpoint + params
 
@@ -28,5 +32,10 @@ headers = {'user-agent': ('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) '
 
 r = requests.get(url, headers=headers)
 print(f"Status code: {r.status_code}")
-print(r.text)
+print(r.headers['content-type'])
+
+f = open('nba-data.html', 'wb')
+f.write(r.content)
+f.close()
+
 
