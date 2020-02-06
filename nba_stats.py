@@ -2,40 +2,31 @@
 # D. Rodriguez, 2020-01-18
 # References:
 #   https://github.com/seemethere/nba_py/wiki/stats.nba.com-Endpoint-Documentation
+#   https://www.youtube.com/watch?v=NCyPY-jfb3I
+#   https://github.com/swar/nba_api
 # --------------------------------------------------------------------------- #
-import requests
+import pandas as pd
+from nba_api.stats.static import players
 
-# Make an API call and store the response.
-base_url = 'https://stats.nba.com/'
+player_dict = players.get_players()
 
-# Harden 60 point shot chart
-# ?flag=3&CFID=&CFPARAMS=&PlayerID=201935&TeamID=1610612745&GameID=0021900282&ContextMeasure=FGA&Season=2019-20&SeasonType=Regular%20Season&RangeType=0&StartPeriod=1&EndPeriod=10&StartRange=0&EndRange=28800&section=game&sct=plot
-# Lillard 60 point shot chart
-# ?flag=3&CFID=&CFPARAMS=&PlayerID=203081&TeamID=1610612757&GameID=0021900125&ContextMeasure=FGA&Season=2019-20&SeasonType=Regular%20Season&RangeType=0&StartPeriod=1&EndPeriod=10&StartRange=0&EndRange=28800&section=game&sct=plot
-# Total Points Leaders
-# events/
-# endpoint = 'players/traditional/'
-# params = '?PerMode=Totals&sort=PTS&dir=-1'
+bron = [player for player in player_dict if player['full_name'] == 'LeBron James'][0]
+bron_id = bron['id']
 
-endpoint = 'game/'
-params = '0021900741/shotchart/'
+from nba_api.stats.static import teams
+team_dict = teams.get_teams()
+GSW = [team for team in team_dict if team['full_name'] == 'Golden State Warriors'][0]
+GSW_id = GSW['id']
 
+from nba_api.stats.endpoints import playergamelog
+from nba_api.stats.library.parameters import SeasonAll
 
-url = base_url + endpoint + params
-
-print(url)
-
-headers = {'user-agent': ('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) '
-                          'AppleWebKit/537.36 (KHTML, like Gecko) '
-                          'Chrome/45.0.2454.101 Safari/537.36'),
-           'referer': 'http://stats.nba.com/scores/'}
-
-r = requests.get(url, headers=headers)
-print(f"Status code: {r.status_code}")
-print(r.headers['content-type'])
-
-f = open('nba-data.html', 'wb')
-f.write(r.content)
-f.close()
+gamelog_bron = playergamelog.PlayerGameLog(player_id=bron_id, season='2017')
+gamelog_bron_df = gamelog_bron.get_data_frames()[0]
 
 
+gamelog_bron_all = playergamelog.PlayerGameLog(player_id=bron_id, season=SeasonAll.all)
+gamelog_bron_df_all = gamelog_bron_all.get_data_frames()[0]
+
+from nba_api.stats.endpoints import leaguegamefinder
+GSW_games = leaguegamefinder.LeagueGameFinder(team_id_nullable=GSW_id).get_data_frames()[0]
