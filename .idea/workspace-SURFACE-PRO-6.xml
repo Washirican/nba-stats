@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="dc4c0acc-76c1-4132-a991-54f5aef617b2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/nba_stats.py" beforeDir="false" afterPath="$PROJECT_DIR$/nba_stats.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="C:\Users\Daniel\OneDrive\Programming\Python Projects\nba-stats\.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="1XK1y2CTjfwT1L3r7B8ZpAjQUd1" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showURL" value="false" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RunManager">
+    <configuration name="nba_stats" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="NBA Stats App" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/nba_stats.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.nba_stats" />
+        <item itemvalue="Python.nba_stats" />
+        <item itemvalue="Python.nba_stats" />
+        <item itemvalue="Python.nba_stats" />
+        <item itemvalue="Python.nba_stats" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="dc4c0acc-76c1-4132-a991-54f5aef617b2" name="Default Changelist" comment="" />
+      <created>1580780222755</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1580780222755</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Initial commit.">
+      <created>1580782321724</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1580782321724</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Initial commit.">
+      <created>1580784110195</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1580784110195</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Start exploring nba_api package from swar.">
+      <created>1580976405677</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1580976405677</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Initial commit." />
+    <MESSAGE value="Start exploring nba_api package from swar." />
+    <option name="LAST_COMMIT_MESSAGE" value="Start exploring nba_api package from swar." />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="439" y="419" key="#com.intellij.codeInsight.template.impl.EditVariableDialog" timestamp="1580972998938">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state x="313" y="358" key="#com.intellij.codeInsight.template.impl.EditVariableDialog/0.40.1368.872@0.40.1368.872" timestamp="1580966686626" />
+    <state x="439" y="419" key="#com.intellij.codeInsight.template.impl.EditVariableDialog/0.40.1920.1040/-1920.40.1920.1040@0.40.1920.1040" timestamp="1580972998938" />
+    <state x="365" y="205" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1580965954169">
+      <screen x="0" y="40" width="1368" height="872" />
+    </state>
+    <state x="365" y="205" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.40.1368.872@0.40.1368.872" timestamp="1580965954169" />
+    <state x="260" y="128" key="CommitChangelistDialog2" timestamp="1580976404850">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state x="185" y="114" key="CommitChangelistDialog2/0.40.1368.872@0.40.1368.872" timestamp="1580967204997" />
+    <state x="-934" y="-202" key="CommitChangelistDialog2/0.40.1920.1040/-1080.-362.1080.1880@-1080.-362.1080.1880" timestamp="1580784109523" />
+    <state x="260" y="128" key="CommitChangelistDialog2/0.40.1920.1040/-1920.40.1920.1040@0.40.1920.1040" timestamp="1580976404850" />
+    <state x="377" y="290" key="FileChooserDialogImpl" timestamp="1581199298970">
+      <screen x="0" y="40" width="1368" height="872" />
+    </state>
+    <state x="377" y="290" key="FileChooserDialogImpl/0.40.1368.872@0.40.1368.872" timestamp="1581199298970" />
+    <state width="1348" height="278" key="GridCell.Tab.0.bottom" timestamp="1581196061694">
+      <screen x="0" y="40" width="1368" height="872" />
+    </state>
+    <state width="1348" height="278" key="GridCell.Tab.0.bottom/0.40.1368.872@0.40.1368.872" timestamp="1581196061694" />
+    <state width="1059" height="680" key="GridCell.Tab.0.bottom/0.40.1920.1040/-1080.-362.1080.1880@-1080.-362.1080.1880" timestamp="1580784129050" />
+    <state width="1899" height="345" key="GridCell.Tab.0.bottom/0.40.1920.1040/-1080.-362.1080.1880@0.40.1920.1040" timestamp="1580781455074" />
+    <state width="1899" height="344" key="GridCell.Tab.0.bottom/0.40.1920.1040/-1920.40.1920.1040@0.40.1920.1040" timestamp="1580976438369" />
+    <state width="1348" height="278" key="GridCell.Tab.0.center" timestamp="1581196061694">
+      <screen x="0" y="40" width="1368" height="872" />
+    </state>
+    <state width="1348" height="278" key="GridCell.Tab.0.center/0.40.1368.872@0.40.1368.872" timestamp="1581196061694" />
+    <state width="1059" height="680" key="GridCell.Tab.0.center/0.40.1920.1040/-1080.-362.1080.1880@-1080.-362.1080.1880" timestamp="1580784129050" />
+    <state width="1899" height="345" key="GridCell.Tab.0.center/0.40.1920.1040/-1080.-362.1080.1880@0.40.1920.1040" timestamp="1580781455074" />
+    <state width="1899" height="344" key="GridCell.Tab.0.center/0.40.1920.1040/-1920.40.1920.1040@0.40.1920.1040" timestamp="1580976438369" />
+    <state width="1348" height="278" key="GridCell.Tab.0.left" timestamp="1581196061694">
+      <screen x="0" y="40" width="1368" height="872" />
+    </state>
+    <state width="1348" height="278" key="GridCell.Tab.0.left/0.40.1368.872@0.40.1368.872" timestamp="1581196061694" />
+    <state width="1059" height="680" key="GridCell.Tab.0.left/0.40.1920.1040/-1080.-362.1080.1880@-1080.-362.1080.1880" timestamp="1580784129050" />
+    <state width="1899" height="345" key="GridCell.Tab.0.left/0.40.1920.1040/-1080.-362.1080.1880@0.40.1920.1040" timestamp="1580781455074" />
+    <state width="1899" height="344" key="GridCell.Tab.0.left/0.40.1920.1040/-1920.40.1920.1040@0.40.1920.1040" timestamp="1580976438369" />
+    <state width="1348" height="278" key="GridCell.Tab.0.right" timestamp="1581196061694">
+      <screen x="0" y="40" width="1368" height="872" />
+    </state>
+    <state width="1348" height="278" key="GridCell.Tab.0.right/0.40.1368.872@0.40.1368.872" timestamp="1581196061694" />
+    <state width="1059" height="680" key="GridCell.Tab.0.right/0.40.1920.1040/-1080.-362.1080.1880@-1080.-362.1080.1880" timestamp="1580784129050" />
+    <state width="1899" height="345" key="GridCell.Tab.0.right/0.40.1920.1040/-1080.-362.1080.1880@0.40.1920.1040" timestamp="1580781455074" />
+    <state width="1899" height="344" key="GridCell.Tab.0.right/0.40.1920.1040/-1920.40.1920.1040@0.40.1920.1040" timestamp="1580976438369" />
+    <state width="1348" height="278" key="GridCell.Tab.1.bottom" timestamp="1581196061693">
+      <screen x="0" y="40" width="1368" height="872" />
+    </state>
+    <state width="1348" height="278" key="GridCell.Tab.1.bottom/0.40.1368.872@0.40.1368.872" timestamp="1581196061693" />
+    <state width="1059" height="680" key="GridCell.Tab.1.bottom/0.40.1920.1040/-1080.-362.1080.1880@-1080.-362.1080.1880" timestamp="1580784129050" />
+    <state width="1899" height="345" key="GridCell.Tab.1.bottom/0.40.1920.1040/-1080.-362.1080.1880@0.40.1920.1040" timestamp="1580781455074" />
+    <state width="1899" height="344" key="GridCell.Tab.1.bottom/0.40.1920.1040/-1920.40.1920.1040@0.40.1920.1040" timestamp="1580976438369" />
+    <state width="1348" height="278" key="GridCell.Tab.1.center" timestamp="1581196061693">
+      <screen x="0" y="40" width="1368" height="872" />
+    </state>
+    <state width="1348" height="278" key="GridCell.Tab.1.center/0.40.1368.872@0.40.1368.872" timestamp="1581196061693" />
+    <state width="1059" height="680" key="GridCell.Tab.1.center/0.40.1920.1040/-1080.-362.1080.1880@-1080.-362.1080.1880" timestamp="1580784129050" />
+    <state width="1899" height="345" key="GridCell.Tab.1.center/0.40.1920.1040/-1080.-362.1080.1880@0.40.1920.1040" timestamp="1580781455074" />
+    <state width="1899" height="344" key="GridCell.Tab.1.center/0.40.1920.1040/-1920.40.1920.1040@0.40.1920.1040" timestamp="1580976438369" />
+    <state width="1348" height="278" key="GridCell.Tab.1.left" timestamp="1581196061692">
+      <screen x="0" y="40" width="1368" height="872" />
+    </state>
+    <state width="1348" height="278" key="GridCell.Tab.1.left/0.40.1368.872@0.40.1368.872" timestamp="1581196061692" />
+    <state width="1059" height="680" key="GridCell.Tab.1.left/0.40.1920.1040/-1080.-362.1080.1880@-1080.-362.1080.1880" timestamp="1580784129050" />
+    <state width="1899" height="345" key="GridCell.Tab.1.left/0.40.1920.1040/-1080.-362.1080.1880@0.40.1920.1040" timestamp="1580781455074" />
+    <state width="1899" height="344" key="GridCell.Tab.1.left/0.40.1920.1040/-1920.40.1920.1040@0.40.1920.1040" timestamp="1580976438369" />
+    <state width="1348" height="278" key="GridCell.Tab.1.right" timestamp="1581196061693">
+      <screen x="0" y="40" width="1368" height="872" />
+    </state>
+    <state width="1348" height="278" key="GridCell.Tab.1.right/0.40.1368.872@0.40.1368.872" timestamp="1581196061693" />
+    <state width="1059" height="680" key="GridCell.Tab.1.right/0.40.1920.1040/-1080.-362.1080.1880@-1080.-362.1080.1880" timestamp="1580784129050" />
+    <state width="1899" height="345" key="GridCell.Tab.1.right/0.40.1920.1040/-1080.-362.1080.1880@0.40.1920.1040" timestamp="1580781455074" />
+    <state width="1899" height="344" key="GridCell.Tab.1.right/0.40.1920.1040/-1920.40.1920.1040@0.40.1920.1040" timestamp="1580976438369" />
+    <state x="104" y="177" key="SettingsEditor" timestamp="1581199314425">
+      <screen x="0" y="40" width="1368" height="872" />
+    </state>
+    <state x="104" y="177" key="SettingsEditor/0.40.1368.872@0.40.1368.872" timestamp="1581199314425" />
+    <state x="-998" y="-67" key="SettingsEditor/0.40.1920.1040/-1080.-362.1080.1880@-1080.-362.1080.1880" timestamp="1580782462101" />
+    <state x="461" y="203" key="SettingsEditor/0.40.1920.1040/-1080.-362.1080.1880@0.40.1920.1040" timestamp="1580780523618" />
+    <state x="146" y="203" key="SettingsEditor/0.40.1920.1040/-1920.40.1920.1040@0.40.1920.1040" timestamp="1580973498088" />
+    <state x="233" y="193" key="Vcs.Push.Dialog.v2" timestamp="1580976409067">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state x="-949" y="-86" key="Vcs.Push.Dialog.v2/0.40.1920.1040/-1080.-362.1080.1880@-1080.-362.1080.1880" timestamp="1580784113741" />
+    <state x="233" y="193" key="Vcs.Push.Dialog.v2/0.40.1920.1040/-1920.40.1920.1040@0.40.1920.1040" timestamp="1580976409067" />
+    <state width="548" height="948" key="XDebugger.FullValuePopup" timestamp="1580782585064">
+      <screen x="-1080" y="-362" width="1080" height="1880" />
+    </state>
+    <state width="548" height="948" key="XDebugger.FullValuePopup/0.40.1920.1040/-1080.-362.1080.1880@-1080.-362.1080.1880" timestamp="1580782585064" />
+    <state width="600" height="440" key="javadoc.popup" timestamp="1580974720143">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state width="600" height="440" key="javadoc.popup/0.40.1920.1040/-1920.40.1920.1040@0.40.1920.1040" timestamp="1580974720143" />
+  </component>
+</project>
