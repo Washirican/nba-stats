@@ -104,6 +104,8 @@ for element in court_elements:
 
     # return ax
 ax.add_patch(center_outer_arc)
-ax.axis([-250, 250, -50, 425])
+ax.axis([-250, 250, -48, 423])
+
+
 
 plt.show()

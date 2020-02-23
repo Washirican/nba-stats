@@ -11,29 +11,28 @@ from nba_api.stats.static import players
 from nba_api.stats.endpoints import playergamelog
 from nba_api.stats.library.parameters import SeasonAll
 from nba_api.stats.static import teams
+from nba_api.stats.endpoints import commonplayerinfo
 import charts
 
+
+# TODO D. Rodriguez 2020-02-22: Get player name from user input
 player_name = 'LeBron James'
-team_name = 'Los Angeles Lakers'
 
 player_dict = players.get_players()
 player = [player for player in player_dict if player['full_name'] == player_name][0]
 player_id = player['id']
 
-# TODO D. Rodriguez 2020-02-20: How to get Team ID from Player Name
-team_dict = teams.get_teams()
-team = [team for team in team_dict if team['full_name'] == team_name][0]
-team_id = team['id']
+# Use Player ID to get team full name and team ID
+player_info = commonplayerinfo.CommonPlayerInfo(player_id=player_id)
+team_name = player_info.data_sets[0].data['data'][0][17]
+team_city = player_info.data_sets[0].data['data'][0][20]
+team_full_name = team_city + ' ' + team_name
+team_id = player_info.data_sets[0].data['data'][0][16]
 
 player_gamelog = playergamelog.PlayerGameLog(player_id=player_id, season='2019')
-
-# TODO D. Rodriguez 2020-02-12: Make search function
-# player_id = '2544'  # LeBron
-# team_id = '1610612747'
-
-# player_id = '201935'  # Harden
-# team_id = '1610612745'
-game_id = '0021900817'
+game_id = player_gamelog.data_sets[0].data['data'][0][2]
+game_date = player_gamelog.data_sets[0].data['data'][0][3]
+game_teams = player_gamelog.data_sets[0].data['data'][0][4]
 
 shot_chart_detail = ShotChartDetail(player_id=player_id, team_id=team_id,
                                     game_id_nullable=game_id,
@@ -42,15 +41,31 @@ shot_chart_detail = ShotChartDetail(player_id=player_id, team_id=team_id,
 headers = shot_chart_detail.data_sets[0].data['headers']
 shots = shot_chart_detail.data_sets[0].data['data']
 
-x = []
-y = []
+x_all = []
+y_all = []
+
+x_made = []
+y_made = []
+
+x_miss = []
+y_miss = []
 
 # TODO D. Rodriguez 2020-02-12: Separate shots into made/missed
-# print(headers[7:19])
 for shot in shots:
-    # print(shot)
-    # print(shot[7:19])
-    x.append(shot[17])
-    y.append(shot[18])
+    x_all.append(shot[17])
+    y_all.append(shot[18])
 
-chart = charts.shot_chart(x, y)
+    if shot[20]:
+        x_made.append(shot[17])
+        y_made.append(shot[18])
+    else:
+        x_miss.append(shot[17])
+        y_miss.append(shot[18])
+
+chart_title = player_name + ' ' + game_date + ' ' + game_teams
+
+chart = charts.shot_chart(x_all, y_all,
+                          title=chart_title,
+                          flip_court=True)
+
+# chart = charts.shot_chart(x_miss, y_miss)

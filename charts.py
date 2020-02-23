@@ -401,7 +401,7 @@ def shot_chart_jointgrid(x, y, data=None, joint_type="scatter", title="",
         ax.spines["left"].set_visible(False)
 
     return grid
-#
+
 
 def shot_chart_jointplot(x, y, data=None, kind="scatter", title="", color="b",
                          cmap=None, xlim=(-250, 250), ylim=(422.5, -47.5),
