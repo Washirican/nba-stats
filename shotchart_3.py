@@ -64,8 +64,8 @@ for shot in shots:
 
 chart_title = player_name + ' ' + game_date + ' ' + game_teams
 
-chart = charts.shot_chart(x_all, y_all,
+chart = charts.shot_chart(x_made, y_made,
                           title=chart_title,
                           flip_court=True)
 
-# chart = charts.shot_chart(x_miss, y_miss)
+chart.scatter(x_miss, y_miss, color='r', marker='x')
