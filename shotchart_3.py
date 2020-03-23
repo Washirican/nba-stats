@@ -50,7 +50,6 @@ y_made = []
 x_miss = []
 y_miss = []
 
-# TODO D. Rodriguez 2020-02-12: Separate shots into made/missed
 for shot in shots:
     x_all.append(shot[17])
     y_all.append(shot[18])
