@@ -16,7 +16,7 @@ import charts
 
 
 # TODO D. Rodriguez 2020-02-22: Get player name from user input
-player_name = 'Giannis Antetokounmpo'
+player_name = 'James Harden' # 'Giannis Antetokounmpo'
 
 player_dict = players.get_players()
 player = [player for player in player_dict if player['full_name'] == player_name][0]
