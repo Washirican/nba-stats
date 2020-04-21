@@ -20,7 +20,6 @@ HEADERS = {
         'x-nba-stats-token': 'true',
         'Connection': 'keep-alive',
         'Referer': 'https://stats.nba.com/',
-        # 'Referer': 'https://stats.nba.com/events/?flag=3&CFID=&CFPARAMS=&PlayerID=203081&TeamID=1610612757&GameID=0021900652&ContextMeasure=FGA&Season=2019-20&SeasonType=Regular%20Season&LeagueID=00&PlusMinus=N&PaceAdjust=N&Rank=N&Outcome=&Location=&Month=0&SeasonSegment=&OpponentTeamID=0&VsConference=&VsDivision=&GameSegment=&Period=0&LastNGames=0&DateFrom=&DateTo=&PORound=0&ShotClockRange=&PerMode=Totals&MeasureType=Base&section=player&sct=plot',
         'Pragma': 'no-cache',
         'Cache-Control': 'no-cache',
         }
@@ -49,7 +48,6 @@ def clean_data(response):
 
 
 def get_boxscore_data():
-    # game_id = '0021800944'
     parameters = {'GameID': '0021800944'}
     endpoint = 'boxscoresummaryv2'
     request_url = f'https://stats.nba.com/stats/{endpoint}?'
