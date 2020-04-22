@@ -10,7 +10,6 @@
 
 import requests
 import matplotlib.pyplot as plt
-import numpy as np
 
 HEADERS = {
         'Host': 'stats.nba.com',
