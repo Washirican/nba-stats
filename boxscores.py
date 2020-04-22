@@ -129,6 +129,9 @@ def get_shotchart_data():
 
 
 def plot_short_chart(all_shots):
+    # TODO D. Rodriguez 2020-04-22: Cleanup variable quantity, maybe read
+    #  data directly from all_shots?
+
     x_all = []
     y_all = []
 
@@ -149,16 +152,9 @@ def plot_short_chart(all_shots):
             x_miss.append(shot['LOC_X'])
             y_miss.append(shot['LOC_Y'])
 
-    # fig = plt.figure()
-    # ax = fig.add_subplot()
-    #
-    # ax.scatter(x_miss, y_miss, marker='x', c='red')  # c=color, marker=marker)
-    # ax.scatter(x_made, y_made, facecolors='none', edgecolors='green')  # c=color, marker=marker)
-    #
-    # plt.title('Dame Dolla 61 Points')
-    # plt.show()
+    # TODO D. Rodriguez 2020-04-22: Add shot info to each shot marker
+    #  while hovering
 
-    # TODO D. Rodriguez 2020-04-21: Try to plot shots over image
     im = plt.imread('shotchart-blue.png')
     fig, ax = plt.subplots()
     ax.imshow(im, extent=[-260, 260, -65, 424])
@@ -166,7 +162,7 @@ def plot_short_chart(all_shots):
     ax.scatter(x_miss, y_miss, marker='x', c='red')  # c=color, marker=marker)
     ax.scatter(x_made, y_made, facecolors='none', edgecolors='green')  # c=color, marker=marker)
 
-    plt.title('Dame Dolla 61 Points')
+    plt.title(f'{all_shots[0]["PLAYER_NAME"]} ({all_shots[0]["HTM"]}) vs {all_shots[0]["VTM"]}')
     plt.show()
 
 
