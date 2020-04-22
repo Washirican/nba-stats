@@ -9,10 +9,13 @@
 # TODO D. Rodriguez 2020-04-20: Create basic UI
 
 import requests
+import matplotlib.pyplot as plt
+import numpy as np
 
 HEADERS = {
         'Host': 'stats.nba.com',
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:72.0) Gecko/20100101 Firefox/72.0',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:72.0) '
+                      'Gecko/20100101 Firefox/72.0',
         'Accept': 'application/json, text/plain, */*',
         'Accept-Language': 'en-US,en;q=0.5',
         'Accept-Encoding': 'gzip, deflate, br',
@@ -48,7 +51,7 @@ def clean_data(response):
 
 
 def get_boxscore_data():
-    parameters = {'GameID': '0021800944'}
+    parameters = {'GameID': '0021900652'}
     endpoint = 'boxscoresummaryv2'
     request_url = f'https://stats.nba.com/stats/{endpoint}?'
 
@@ -122,11 +125,50 @@ def get_shotchart_data():
     clean_response = clean_data(response)
     all_shot_data = clean_response['Shot_Chart_Detail']
 
+    # returns a list of shot dictionaries
     return all_shot_data
 
 
-def plot_shortchart(shot_data):
-    pass
+def plot_short_chart(all_shots):
+    x_all = []
+    y_all = []
+
+    x_made = []
+    y_made = []
+
+    x_miss = []
+    y_miss = []
+
+    for shot in all_shots:
+        x_all.append(shot['LOC_X'])
+        y_all.append(shot['LOC_Y'])
+
+        if shot['SHOT_MADE_FLAG']:
+            x_made.append(shot['LOC_X'])
+            y_made.append(shot['LOC_Y'])
+        else:
+            x_miss.append(shot['LOC_X'])
+            y_miss.append(shot['LOC_Y'])
+
+    # fig = plt.figure()
+    # ax = fig.add_subplot()
+    #
+    # ax.scatter(x_miss, y_miss, marker='x', c='red')  # c=color, marker=marker)
+    # ax.scatter(x_made, y_made, facecolors='none', edgecolors='green')  # c=color, marker=marker)
+    #
+    # plt.title('Dame Dolla 61 Points')
+    # plt.show()
+
+    # TODO D. Rodriguez 2020-04-21: Try to plot shots over image
+    im = plt.imread('shotchart-blue.png')
+    fig, ax = plt.subplots()
+    ax.imshow(im, extent=[-260, 260, -65, 424])
+
+    ax.scatter(x_miss, y_miss, marker='x', c='red')  # c=color, marker=marker)
+    ax.scatter(x_made, y_made, facecolors='none', edgecolors='green')  # c=color, marker=marker)
+
+    plt.title('Dame Dolla 61 Points')
+    plt.show()
 
 
 if __name__ == '__main__':
@@ -135,5 +177,6 @@ if __name__ == '__main__':
     # print(boxscore_data['InactivePlayers'])
 
     shot_data = get_shotchart_data()
-    print('Shot Chart data keys: ')
-    print(shot_data)
+    # print('Shot Chart data keys: ')
+    # print(shot_data)
+    plot_short_chart(shot_data)
