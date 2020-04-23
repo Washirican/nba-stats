@@ -175,3 +175,6 @@ if __name__ == '__main__':
     # print('Shot Chart data keys: ')
     # print(shot_data)
     plot_short_chart(shot_data)
+
+    bron_id = 2544
+    LAL_id = 1610612747
