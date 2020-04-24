@@ -49,17 +49,6 @@ def clean_data(response):
     return data
 
 
-def get_boxscore_data():
-    parameters = {'GameID': '0021900652'}
-    endpoint = 'boxscoresummaryv2'
-    request_url = f'https://stats.nba.com/stats/{endpoint}?'
-
-    response = requests.get(request_url, headers=HEADERS, params=parameters)
-    result = clean_data(response)
-
-    return result
-
-
 def get_shotchart_data():
     parameters = {'AheadBehind': '',
                   'CFID': '',
@@ -167,10 +156,6 @@ def plot_short_chart(all_shots):
 
 
 if __name__ == '__main__':
-    # boxscore_data = get_boxscore_data()
-    # print('Box Score data keys: ')
-    # print(boxscore_data['InactivePlayers'])
-
     shot_data = get_shotchart_data()
     # print('Shot Chart data keys: ')
     # print(shot_data)

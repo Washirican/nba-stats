@@ -40,4 +40,7 @@ if __name__ == '__main__':
     request_url = f'https://stats.nba.com/stats/{endpoint}?'
 
     response = requests.get(request_url, headers=HEADERS, params=parameters)
-    scoreboard_data_dict = json.loads(response.content.decode())
+    scoreboard_data_dict = json.loads(response.content.decode())['resultSets']
+
+    scoreboard_data_all_games_list = json.loads(response.content.decode())['resultSets'][0]['rowSet']
+

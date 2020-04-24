@@ -49,8 +49,8 @@ def clean_data(response):
     return data
 
 
-def get_boxscore_data():
-    parameters = {'GameID': '0021900652'}
+def get_boxscore_data(game_id):
+    parameters = {'GameID': game_id}
     endpoint = 'boxscoresummaryv2'
     request_url = f'https://stats.nba.com/stats/{endpoint}?'
 
@@ -60,121 +60,11 @@ def get_boxscore_data():
     return result
 
 
-def get_shotchart_data():
-    parameters = {'AheadBehind': '',
-                  'CFID': '',
-                  'CFPARAMS': '',
-                  'ClutchTime': '',
-                  'Conference': '',
-                  'ContextFilter': '',
-                  'ContextMeasure': 'FGA',
-                  'DateFrom': '',
-                  'DateTo': '',
-                  'Division': '',
-                  'EndPeriod': '10',
-                  'EndRange': '28800',
-                  'GROUP_ID': '',
-                  'GameEventID': '',
-                  'GameID': '0021900652',
-                  'GameSegment': '',
-                  'GroupID': '',
-                  'GroupMode': '',
-                  'GroupQuantity': '5',
-                  'LastNGames': '0',
-                  'LeagueID': '00',
-                  'Location': '',
-                  'Month': '0',
-                  'OnOff': '',
-                  'OpponentTeamID': '0',
-                  'Outcome': '',
-                  'PORound': '0',
-                  'Period': '0',
-                  'PlayerID': '203081',
-                  'PlayerID1': '',
-                  'PlayerID2': '',
-                  'PlayerID3': '',
-                  'PlayerID4': '',
-                  'PlayerID5': '',
-                  'PlayerPosition': '',
-                  'PointDiff': '',
-                  'Position': '',
-                  'RangeType': '0',
-                  'RookieYear': '',
-                  'Season': '2019-20',
-                  'SeasonSegment': '',
-                  'SeasonType': 'Regular Season',
-                  'ShotClockRange': '',
-                  'StartPeriod': '1',
-                  'StartRange': '0',
-                  'StarterBench': '',
-                  'TeamID': '1610612757',
-                  'VsConference': '',
-                  'VsDivision': '',
-                  'VsPlayerID1': '',
-                  'VsPlayerID2': '',
-                  'VsPlayerID3': '',
-                  'VsPlayerID4': '',
-                  'VsPlayerID5': '',
-                  'VsTeamID': ''}
-
-    endpoint = 'shotchartdetail'
-    request_url = f'https://stats.nba.com/stats/{endpoint}?'
-
-    response = requests.get(request_url, headers=HEADERS, params=parameters)
-    clean_response = clean_data(response)
-    all_shot_data = clean_response['Shot_Chart_Detail']
-
-    # returns a list of shot dictionaries
-    return all_shot_data
-
-
-def plot_short_chart(all_shots):
-    # TODO D. Rodriguez 2020-04-22: Cleanup variable quantity, maybe read
-    #  data directly from all_shots?
-
-    x_all = []
-    y_all = []
-
-    x_made = []
-    y_made = []
-
-    x_miss = []
-    y_miss = []
-
-    for shot in all_shots:
-        x_all.append(shot['LOC_X'])
-        y_all.append(shot['LOC_Y'])
-
-        if shot['SHOT_MADE_FLAG']:
-            x_made.append(shot['LOC_X'])
-            y_made.append(shot['LOC_Y'])
-        else:
-            x_miss.append(shot['LOC_X'])
-            y_miss.append(shot['LOC_Y'])
-
-    # TODO D. Rodriguez 2020-04-22: Add shot info to each shot marker
-    #  while hovering
-
-    im = plt.imread('shotchart-blue.png')
-    fig, ax = plt.subplots()
-    ax.imshow(im, extent=[-260, 260, -65, 424])
-
-    ax.scatter(x_miss, y_miss, marker='x', c='red')  # c=color, marker=marker)
-    ax.scatter(x_made, y_made, facecolors='none', edgecolors='green')  # c=color, marker=marker)
-
-    plt.title(f'{all_shots[0]["PLAYER_NAME"]} ({all_shots[0]["HTM"]}) vs {all_shots[0]["VTM"]}')
-    plt.show()
-
-
 if __name__ == '__main__':
-    # boxscore_data = get_boxscore_data()
-    # print('Box Score data keys: ')
-    # print(boxscore_data['InactivePlayers'])
-
-    shot_data = get_shotchart_data()
-    # print('Shot Chart data keys: ')
-    # print(shot_data)
-    plot_short_chart(shot_data)
+    game_id = '0021900652'
+    boxscore_data = get_boxscore_data(game_id)
+    print('Box Score data keys: ')
+    print(boxscore_data['InactivePlayers'])
 
     bron_id = 2544
     LAL_id = 1610612747
