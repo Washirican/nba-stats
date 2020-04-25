@@ -21,6 +21,7 @@ HEADERS = {
         }
 
 
+# TODO (D. Rodriguez 2020-04-24): Inputs are player ID and season
 def get_player_gamelog():
     pass
 
