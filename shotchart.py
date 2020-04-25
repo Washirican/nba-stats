@@ -49,7 +49,7 @@ def clean_data(response):
     return data
 
 
-def get_shotchart_data():
+def get_shotchart_data(player_id, season_id, game_id):
     parameters = {'AheadBehind': '',
                   'CFID': '',
                   'CFPARAMS': '',
@@ -64,7 +64,7 @@ def get_shotchart_data():
                   'EndRange': '0',
                   'GROUP_ID': '',
                   'GameEventID': '',
-                  'GameID': '0021900652',
+                  'GameID': game_id,
                   'GameSegment': '',
                   'GroupID': '',
                   'GroupMode': '',
@@ -78,7 +78,7 @@ def get_shotchart_data():
                   'Outcome': '',
                   'PORound': '0',
                   'Period': '0',
-                  'PlayerID': '203081',
+                  'PlayerID': player_id,
                   'PlayerID1': '',
                   'PlayerID2': '',
                   'PlayerID3': '',
@@ -89,7 +89,7 @@ def get_shotchart_data():
                   'Position': '',
                   'RangeType': '0',
                   'RookieYear': '',
-                  'Season': '2019-20',
+                  'Season': season_id,
                   'SeasonSegment': '',
                   'SeasonType': 'Regular Season',
                   'ShotClockRange': '',
@@ -151,15 +151,25 @@ def plot_short_chart(all_shots):
     ax.scatter(x_miss, y_miss, marker='x', c='red')  # c=color, marker=marker)
     ax.scatter(x_made, y_made, facecolors='none', edgecolors='green')  # c=color, marker=marker)
 
+    # TODO (D. Rodriguez 2020-04-24): Fix Figure title to show correct teams for player
     plt.title(f'{all_shots[0]["PLAYER_NAME"]} ({all_shots[0]["HTM"]}) vs {all_shots[0]["VTM"]}')
     plt.show()
 
 
 if __name__ == '__main__':
-    shot_data = get_shotchart_data()
+
+    # Test Variables:
+    # bron_id = '2544'
+    # harden_id = '201935'
+    # lillard_id = '203081'
+    # LAL_id = '1610612747'
+
+    player_id = '201935'
+    season_id = '2018-19'
+    game_id = '0021801218'
+
+    shot_data = get_shotchart_data(player_id, season_id, game_id)
     # print('Shot Chart data keys: ')
     # print(shot_data)
     plot_short_chart(shot_data)
 
-    bron_id = 2544
-    LAL_id = 1610612747
