@@ -20,8 +20,8 @@ players = data['data']['players']
 teams = data['data']['teams']
 data_date = data['generated']
 
-first_name = 'Damian'
-last_name = 'Lillard'
+first_name = 'Michael'
+last_name = 'Jordan'
 
 for player in players:
     # print(player[1])
@@ -32,9 +32,10 @@ for player in players:
     # else:
     # print(f'Player {first_name.title()} {last_name.title()} not found in database.')
 
-for team in teams:
-    if str(team_id) in team[0]:
-        print(team[:5])
+# TODO (D. Rodriguez 2020-04-24): Break if team name not found
+# for team in teams:
+#     if str(team_id) in team[0]:
+#         print(team[:5])
 
 # TODO (D. Rodriguez, 2020-04-22): Save player and team info to database
 #  (sqlite3/MongoDB)

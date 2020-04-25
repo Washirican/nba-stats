@@ -22,35 +22,31 @@ HEADERS = {
 
 
 # TODO (D. Rodriguez 2020-04-24): Inputs are player ID and season
-def get_player_gamelog():
-    pass
-
-
-if __name__ == '__main__':
+def get_player_gamelog(player_id, season_id):
     parameters = {
-            "DateFrom": "",
-            "DateTo": "",
-            "GameSegment": "",
-            "LastNGames": "0",
-            "LeagueID": "00",
-            "Location": "",
-            "MeasureType": "Base",
-            "Month": "0",
-            "OpponentTeamID": "0",
-            "Outcome": "",
-            "PORound": "0",
-            "PaceAdjust": "N",
-            "PerMode": "Totals",
-            "Period": "0",
-            "PlayerID": "201935",
-            "PlusMinus": "N",
-            "Rank": "N",
-            "Season": "2018-19",
-            "SeasonSegment": "",
-            "SeasonType": "Regular Season",
-            "ShotClockRange": "",
-            "VsConference": "",
-            "VsDivision": ""
+        'DateFrom': '',
+        'DateTo': '',
+        'GameSegment': '',
+        'LastNGames': '0',
+        'LeagueID': '00',
+        'Location': '',
+        'MeasureType': 'Base',
+        'Month': '0',
+        'OpponentTeamID': '0',
+        'Outcome': '',
+        'PORound': '0',
+        'PaceAdjust': 'N',
+        'PerMode': 'Totals',
+        'Period': '0',
+        'PlayerID': player_id,
+        'PlusMinus': 'N',
+        'Rank': 'N',
+        'Season': season_id,
+        'SeasonSegment': '',
+        'SeasonType': 'Regular Season',
+        'ShotClockRange': '',
+        'VsConference': '',
+        'VsDivision': ''
         }
 
     endpoint = 'playergamelogs'
@@ -62,7 +58,17 @@ if __name__ == '__main__':
 
     player_gamelog_headers = json.loads(response.content.decode())['resultSets'][0]['headers']
     player_gamelog_data = json.loads(response.content.decode())['resultSets'][0]['rowSet']
+    
+    return player_gamelog_data
+
+
+if __name__ == '__main__':
+    player_id = '201935'
+    season_id = ''
+
+    player_gamelog_data = get_player_gamelog(player_id, season_id)
 
     season_id = player_gamelog_data[0][0]
     game_id = player_gamelog_data[0][6]
     game_teams = player_gamelog_data[0][8]
+
