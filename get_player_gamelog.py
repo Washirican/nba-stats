@@ -21,8 +21,8 @@ HEADERS = {
         }
 
 
-# TODO (D. Rodriguez 2020-04-24): Inputs are player ID and season
-def get_player_gamelog(player_id, season_id):
+# TODO (D. Rodriguez 2020-04-24): Inputs are player ID, season year and type
+def get_player_gamelog(player_id, season_year, season_type):
     parameters = {
         'DateFrom': '',
         'DateTo': '',
@@ -41,9 +41,9 @@ def get_player_gamelog(player_id, season_id):
         'PlayerID': player_id,
         'PlusMinus': 'N',
         'Rank': 'N',
-        'Season': season_id,
+        'Season': season_year,
         'SeasonSegment': '',
-        'SeasonType': 'Regular Season',
+        'SeasonType': season_type,
         'ShotClockRange': '',
         'VsConference': '',
         'VsDivision': ''
@@ -54,22 +54,27 @@ def get_player_gamelog(player_id, season_id):
 
     response = requests.get(request_url, headers=HEADERS, params=parameters)
 
-    # player_gamelog_dict = json.loads(response.content.decode())['resultSets'][0]
+    gamelog_headers = json.loads(response.content.decode())['resultSets'][0]['headers']
+    gamelog_data = json.loads(response.content.decode())['resultSets'][0]['rowSet']
 
-    player_gamelog_headers = json.loads(response.content.decode())['resultSets'][0]['headers']
-    player_gamelog_data = json.loads(response.content.decode())['resultSets'][0]['rowSet']
-    
-    return player_gamelog_data
+    gamelog = []
+
+    for game in gamelog_data:
+        gamelog.append(dict(zip(gamelog_headers, game)))
+
+    gamelog_dict = {}
+    for game in gamelog:
+        gamelog_dict[game['GAME_DATE'][:10]] = game
+
+    return gamelog_dict
 
 
 if __name__ == '__main__':
     player_id = '893'
-    season_id = '1997-98'
+    season_year = '1997-98'
+    season_type = 'Regular Season'
 
-    player_gamelog_data = get_player_gamelog(player_id, season_id)
+    gamelog_dict = get_player_gamelog(player_id, season_year, season_type)
 
-    season_id = player_gamelog_data[0][0]
-    game_id = player_gamelog_data[0][6]
-    game_teams = player_gamelog_data[0][8]
 
-    print(game_id, player_id, season_id)
+

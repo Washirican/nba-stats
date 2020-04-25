@@ -20,6 +20,8 @@ players = data['data']['players']
 teams = data['data']['teams']
 data_date = data['generated']
 
+print(data_date)
+
 first_name = 'Michael'
 last_name = 'Jordan'
 

@@ -171,9 +171,9 @@ if __name__ == '__main__':
     # Test Game IDs
     # kobe_81_id = 0020500591 (2005-06)
 
-    player_id = '977'
-    season_id = '2005-06'
-    game_id = '0020500591'
+    player_id = '893'
+    season_id = '1997-98'
+    game_id = '0029700752'
 
     shot_data = get_shotchart_data(player_id, season_id, game_id)
     # print('Shot Chart data keys: ')
