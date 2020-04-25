@@ -63,8 +63,8 @@ def get_player_gamelog(player_id, season_id):
 
 
 if __name__ == '__main__':
-    player_id = '201935'
-    season_id = ''
+    player_id = '893'
+    season_id = '1997-98'
 
     player_gamelog_data = get_player_gamelog(player_id, season_id)
 
@@ -72,3 +72,4 @@ if __name__ == '__main__':
     game_id = player_gamelog_data[0][6]
     game_teams = player_gamelog_data[0][8]
 
+    print(game_id, player_id, season_id)

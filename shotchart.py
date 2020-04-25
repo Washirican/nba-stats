@@ -158,15 +158,22 @@ def plot_short_chart(all_shots):
 
 if __name__ == '__main__':
 
-    # Test Variables:
+    # Player IDs Test Variables:
     # bron_id = '2544'
     # harden_id = '201935'
     # lillard_id = '203081'
+    # mj_id = '893'
+    # kobe_id = '977'
+
+    # Team IDs Test Variables
     # LAL_id = '1610612747'
 
-    player_id = '201935'
-    season_id = '2018-19'
-    game_id = '0021801218'
+    # Test Game IDs
+    # kobe_81_id = 0020500591 (2005-06)
+
+    player_id = '977'
+    season_id = '2005-06'
+    game_id = '0020500591'
 
     shot_data = get_shotchart_data(player_id, season_id, game_id)
     # print('Shot Chart data keys: ')
