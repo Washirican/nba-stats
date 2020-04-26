@@ -9,6 +9,7 @@
 # TODO D. Rodriguez 2020-04-20: Create basic UI
 
 import requests
+import json
 import matplotlib.pyplot as plt
 
 HEADERS = {
@@ -49,7 +50,7 @@ def clean_data(response):
     return data
 
 
-def get_shotchart_data(player_id, season_id, game_id):
+def get_shotchart_data(player_id, season, game_id):
     parameters = {'AheadBehind': '',
                   'CFID': '',
                   'CFPARAMS': '',
@@ -89,7 +90,7 @@ def get_shotchart_data(player_id, season_id, game_id):
                   'Position': '',
                   'RangeType': '0',
                   'RookieYear': '',
-                  'Season': season_id,
+                  'Season': season,
                   'SeasonSegment': '',
                   'SeasonType': 'Regular Season',
                   'ShotClockRange': '',
@@ -110,8 +111,12 @@ def get_shotchart_data(player_id, season_id, game_id):
     request_url = f'https://stats.nba.com/stats/{endpoint}?'
 
     response = requests.get(request_url, headers=HEADERS, params=parameters)
-    clean_response = clean_data(response)
-    all_shot_data = clean_response['Shot_Chart_Detail']
+    # clean_response = clean_data(response)
+    # all_shot_data = clean_response['Shot_Chart_Detail']
+
+    # TODO (D. Rodriguez 2020-04-26): Fix getting all shot data from API
+    all_shot_data = json.loads(response.content.decode())['resultSets'][0]['rowSet']
+
 
     # returns a list of shot dictionaries
     return all_shot_data
@@ -172,9 +177,9 @@ if __name__ == '__main__':
     # kobe_81_id = 0020500591 (2005-06)
 
     player_id = '977'
-    season_id = '1996-97'
+    season = '1996-97'
     game_id = '0029601189'
     #
-    shot_data = get_shotchart_data(player_id, season_id, game_id)
+    shot_data = get_shotchart_data(player_id, season, game_id)
     plot_short_chart(shot_data)
 
