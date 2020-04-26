@@ -63,18 +63,21 @@ def get_player_gamelog(player_id, season_year, season_type):
         gamelog.append(dict(zip(gamelog_headers, game)))
 
     gamelog_dict = {}
+    gamelog_list = []
+
     for game in gamelog:
         gamelog_dict[game['GAME_DATE'][:10]] = game
+        gamelog_list.append(game)
 
-    return gamelog_dict
+    return gamelog_dict, gamelog_list
 
 
-if __name__ == '__main__':
-    player_id = '893'
-    season_year = '1997-98'
-    season_type = 'Regular Season'
-
-    gamelog_dict = get_player_gamelog(player_id, season_year, season_type)
+# if __name__ == '__main__':
+#     player_id = '893'
+#     season_year = '1997-98'
+#     season_type = 'Regular Season'
+#
+    # gamelog_dict = get_player_gamelog(player_id, season_year, season_type)
 
 
 

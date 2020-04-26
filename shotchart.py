@@ -152,11 +152,11 @@ def plot_short_chart(all_shots):
     ax.scatter(x_made, y_made, facecolors='none', edgecolors='green')  # c=color, marker=marker)
 
     # TODO (D. Rodriguez 2020-04-24): Fix Figure title to show correct teams for player
-    plt.title(f'{all_shots[0]["PLAYER_NAME"]} ({all_shots[0]["HTM"]}) vs {all_shots[0]["VTM"]}')
+    # plt.title(f'{all_shots[0]["PLAYER_NAME"]} ({all_shots[0]["HTM"]}) vs {all_shots[0]["VTM"]}')
     plt.show()
 
 
-if __name__ == '__main__':
+# if __name__ == '__main__':
 
     # Player IDs Test Variables:
     # bron_id = '2544'
@@ -171,12 +171,10 @@ if __name__ == '__main__':
     # Test Game IDs
     # kobe_81_id = 0020500591 (2005-06)
 
-    player_id = '893'
-    season_id = '1997-98'
-    game_id = '0029700752'
-
-    shot_data = get_shotchart_data(player_id, season_id, game_id)
-    # print('Shot Chart data keys: ')
-    # print(shot_data)
-    plot_short_chart(shot_data)
+    # player_id = '977'
+    # season_id = '1996-97'
+    # game_id = '0029601189'
+    #
+    # shot_data = get_shotchart_data(player_id, season_id, game_id)
+    # plot_short_chart(shot_data)
 

@@ -22,25 +22,30 @@ HEADERS = {
         }
 
 
-def get_player_career_stats():
-    """Gets score board data for game on a given date"""
-    pass
-
-
-if __name__ == '__main__':
+def get_player_seasons(player_id):
+    """Get player career stats per player ID"""
     parameters = {
         'LeagueID': '00',
         'PerMode': 'PerGame',
-        'PlayerID': '893'
+        'PlayerID': player_id
         }
 
     endpoint = 'playerprofilev2'
     request_url = f'https://stats.nba.com/stats/{endpoint}?'
 
     response = requests.get(request_url, headers=HEADERS, params=parameters)
-    player_career_stats_dict = json.loads(response.content.decode())['resultSets']
+    player_career_stats_dict = \
+    json.loads(response.content.decode())['resultSets'][0]['rowSet']
 
-    # player_career_stats_dict[0]['rowSet'][0][1]
+    player_career_seasons = []
 
-    player_career_stats_all_seasons = json.loads(response.content.decode())['resultSets'][0]['rowSet'][1]
+    for season in player_career_stats_dict:
+        player_career_seasons.append(season[1])
 
+    return player_career_seasons
+
+
+# if __name__ == '__main__':
+#     player_id = '2544'
+#     all_seasons = get_player_seasons(player_id)
+#     print(all_seasons)
