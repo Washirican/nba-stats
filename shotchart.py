@@ -156,7 +156,7 @@ def plot_short_chart(all_shots):
     plt.show()
 
 
-# if __name__ == '__main__':
+if __name__ == '__main__':
 
     # Player IDs Test Variables:
     # bron_id = '2544'
@@ -171,10 +171,10 @@ def plot_short_chart(all_shots):
     # Test Game IDs
     # kobe_81_id = 0020500591 (2005-06)
 
-    # player_id = '977'
-    # season_id = '1996-97'
-    # game_id = '0029601189'
+    player_id = '977'
+    season_id = '1996-97'
+    game_id = '0029601189'
     #
-    # shot_data = get_shotchart_data(player_id, season_id, game_id)
-    # plot_short_chart(shot_data)
+    shot_data = get_shotchart_data(player_id, season_id, game_id)
+    plot_short_chart(shot_data)
 

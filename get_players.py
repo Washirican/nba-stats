@@ -5,11 +5,8 @@
 import json
 import requests
 
-# TODO (D. Rodriguez, 2020-04-22): Save player and team info to database
-#  (sqlite3/MongoDB)
 
-
-def get_player_id(first_name, last_name):
+def get_player_info(first_name, last_name):
     """Ger player id from Player Name"""
     player_index_url = 'https://stats.nba.com/js/data/ptsd/stats_ptsd.js'
     player_list = requests.get(player_index_url)
@@ -30,10 +27,10 @@ def get_player_id(first_name, last_name):
 
     for player in players:
         # print(player[1])
-        if f'{last_name.title()}, {first_name.title()}' in player[1]:
+        if f'{last_name}, {first_name}' in player[1]:
             # print(player[:])
-            player_id = player[0]
-        # break
+            player_info = player
+            return player_info
         # else:
         # print(f'Player {first_name.title()} {last_name.title()} not found in database.')
 
@@ -43,9 +40,12 @@ def get_player_id(first_name, last_name):
     #         print(team[:5])
 
     #
-    return player_id
+    return 0
 
 
 # if __name__ == '__main__':
-#     player_id = get_player_id('Kobe', 'Bryant')
-    # print(player_id)
+#     first_name = 'LeBron'
+#     last_name = 'James'
+#
+#     player_info = get_player_info(first_name, last_name)
+#     print(player_info)
