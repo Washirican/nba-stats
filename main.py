@@ -5,7 +5,8 @@
 import get_player_data
 import get_player_career_stats
 import get_player_gamelog
-import shotchart
+import get_shotchart_data
+import plot_shotchart
 
 if __name__ == '__main__':
     first_name = 'LeBron'
@@ -16,11 +17,18 @@ if __name__ == '__main__':
     player_name = player_info[1]
 
     all_seasons = get_player_career_stats.get_player_seasons(player_id)
-    rookie_season_year = all_seasons[0]
+    # Selects Rookie Season
+    season = 0
+    season_year = all_seasons[season]
 
-    gamelog_dict, gamelog_list = get_player_gamelog.get_player_gamelog(player_id, rookie_season_year, 'Regular Season')
-    game_id = gamelog_list[0]['GAME_ID']
+    gamelog_dict, gamelog_list = get_player_gamelog.get_player_gamelog(player_id, season_year, 'Regular Season')
+    # Select first game of the season
+    game = 3
+    game_id = gamelog_list[game]['GAME_ID']
+    matchup = gamelog_list[game]['MATCHUP']
+    player_name = gamelog_list[game]['PLAYER_NAME']
+    team_name = gamelog_list[game]['TEAM_ABBREVIATION']
 
-    all_shots = shotchart.get_shotchart_data(player_id, rookie_season_year, game_id)
+    all_shots = get_shotchart_data.get_shotchart_data(player_id, season_year, game_id)
 
-    shotchart.plot_short_chart(all_shots)
+    plot_shotchart.plot_shortchart(all_shots, player_name, team_name, matchup)

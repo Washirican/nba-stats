@@ -10,7 +10,6 @@
 
 import requests
 import json
-import matplotlib.pyplot as plt
 
 HEADERS = {
         'Host': 'stats.nba.com',
@@ -28,84 +27,64 @@ HEADERS = {
         }
 
 
-def clean_data(response):
-    raw_data = response.json()
-    results = raw_data['resultSets']
-
-    data = {}
-
-    for result in results:
-        name = result['name']
-        headers = result['headers']
-        row_set = result['rowSet']
-
-        rows = []
-        for raw_row in row_set:
-            row = {}
-            for i in range(len(headers)):
-                row[headers[i]] = raw_row[i]
-            rows.append(row)
-        data[name] = rows
-
-    return data
-
-
 def get_shotchart_data(player_id, season_year, game_id):
-    parameters = {'AheadBehind': '',
-                  'CFID': '',
-                  'CFPARAMS': '',
-                  'ClutchTime': '',
-                  'Conference': '',
-                  'ContextFilter': '',
-                  'ContextMeasure': 'FGA',
-                  'DateFrom': '',
-                  'DateTo': '',
-                  'Division': '',
-                  'EndPeriod': '1',
-                  'EndRange': '0',
-                  'GROUP_ID': '',
-                  'GameEventID': '',
-                  'GameID': game_id,
-                  'GameSegment': '',
-                  'GroupID': '',
-                  'GroupMode': '',
-                  'GroupQuantity': '0',
-                  'LastNGames': '0',
-                  'LeagueID': '00',
-                  'Location': '',
-                  'Month': '0',
-                  'OnOff': '',
-                  'OpponentTeamID': '0',
-                  'Outcome': '',
-                  'PORound': '0',
-                  'Period': '0',
-                  'PlayerID': player_id,
-                  'PlayerID1': '',
-                  'PlayerID2': '',
-                  'PlayerID3': '',
-                  'PlayerID4': '',
-                  'PlayerID5': '',
-                  'PlayerPosition': '',
-                  'PointDiff': '',
-                  'Position': '',
-                  'RangeType': '0',
-                  'RookieYear': '',
-                  'Season': season_year,
-                  'SeasonSegment': '',
-                  'SeasonType': 'Regular Season',
-                  'ShotClockRange': '',
-                  'StartPeriod': '1',
-                  'StartRange': '0',
-                  'StarterBench': '',
-                  'TeamID': '0',
-                  'VsConference': '',
-                  'VsDivision': '',
-                  'VsPlayerID1': '',
-                  'VsPlayerID2': '',
-                  'VsPlayerID3': '',
-                  'VsPlayerID4': '',
-                  'VsPlayerID5': '',
-                  'VsTeamID': ''}
+    parameters = {
+        'AheadBehind': '',
+        'CFID': '',
+        'CFPARAMS': '',
+        'ClutchTime': '',
+        'Conference': '',
+        'ContextFilter': '',
+        'ContextMeasure': 'FGA',
+        'DateFrom': '',
+        'DateTo': '',
+        'Division': '',
+        'EndPeriod': '1',
+        'EndRange': '0',
+        'GROUP_ID': '',
+        'GameEventID': '',
+        'GameID': game_id,
+        'GameSegment': '',
+        'GroupID': '',
+        'GroupMode': '',
+        'GroupQuantity': '0',
+        'LastNGames': '0',
+        'LeagueID': '00',
+        'Location': '',
+        'Month': '0',
+        'OnOff': '',
+        'OpponentTeamID': '0',
+        'Outcome': '',
+        'PORound': '0',
+        'Period': '0',
+        'PlayerID': player_id,
+        'PlayerID1': '',
+        'PlayerID2': '',
+        'PlayerID3': '',
+        'PlayerID4': '',
+        'PlayerID5': '',
+        'PlayerPosition': '',
+        'PointDiff': '',
+        'Position': '',
+        'RangeType': '0',
+        'RookieYear': '',
+        'Season': season_year,
+        'SeasonSegment': '',
+        'SeasonType': 'Regular Season',
+        'ShotClockRange': '',
+        'StartPeriod': '1',
+        'StartRange': '0',
+        'StarterBench': '',
+        'TeamID': '0',
+        'VsConference': '',
+        'VsDivision': '',
+        'VsPlayerID1': '',
+        'VsPlayerID2': '',
+        'VsPlayerID3': '',
+        'VsPlayerID4': '',
+        'VsPlayerID5': '',
+        'VsTeamID': ''
+        }
 
     endpoint = 'shotchartdetail'
     request_url = f'https://stats.nba.com/stats/{endpoint}?'
@@ -115,66 +94,30 @@ def get_shotchart_data(player_id, season_year, game_id):
     # all_shot_data = clean_response['Shot_Chart_Detail']
 
     # TODO (D. Rodriguez 2020-04-26): Fix getting all shot data from API
-    all_shot_data = json.loads(response.content.decode())['resultSets']
+    all_shot_data = json.loads(response.content.decode())['resultSets'][0]
 
-    all_shot_data_dict = {}
+    all_shot_data_list = []
 
-    for shot in all_shot_data:
-        name = shot['name']
-        headers = shot['headers']
-        row_set = shot['rowSet']
+    name = all_shot_data['name']
+    headers = all_shot_data['headers']
+    row_set = all_shot_data['rowSet']
 
-        rows = []
-        for raw_row in row_set:
-            row = {}
-            for i in range(len(headers)):
-                row[headers[i]] = raw_row[i]
-            rows.append(row)
-        all_shot_data_dict[name] = rows
+    for shot in row_set:
+        all_shot_data_list.append(dict(zip(headers, shot)))
+    #
+    # for shot in all_shot_data:
+    #     rows = []
+    #     for raw_row in row_set:
+    #         row = {}
+    #         for i in range(len(headers)):
+    #             row[headers[i]] = raw_row[i]
+    #         rows.append(row)
+    #     all_shot_data_list[name] = rows
 
-    return all_shot_data_dict
-
-
-def plot_shortchart(all_shots):
-    # TODO D. Rodriguez 2020-04-22: Cleanup variable quantity, maybe read
-    #  data directly from all_shots?
-
-    x_all = []
-    y_all = []
-
-    x_made = []
-    y_made = []
-
-    x_miss = []
-    y_miss = []
-
-    for shot in all_shots:
-        x_all.append(shot['LOC_X'])
-        y_all.append(shot['LOC_Y'])
-
-        if shot['SHOT_MADE_FLAG']:
-            x_made.append(shot['LOC_X'])
-            y_made.append(shot['LOC_Y'])
-        else:
-            x_miss.append(shot['LOC_X'])
-            y_miss.append(shot['LOC_Y'])
-
-    # TODO D. Rodriguez 2020-04-22: Add shot info to each shot marker
-    #  while hovering
-
-    im = plt.imread('shotchart-blue.png')
-    fig, ax = plt.subplots()
-    ax.imshow(im, extent=[-260, 260, -65, 424])
-
-    ax.scatter(x_miss, y_miss, marker='x', c='red')  # c=color, marker=marker)
-    ax.scatter(x_made, y_made, facecolors='none', edgecolors='green')  # c=color, marker=marker)
-
-    # TODO (D. Rodriguez 2020-04-24): Fix Figure title to show correct teams for player
-    # plt.title(f'{all_shots[0]["PLAYER_NAME"]} ({all_shots[0]["HTM"]}) vs {all_shots[0]["VTM"]}')
-    plt.show()
+    return all_shot_data_list
 
 
-if __name__ == '__main__':
+# if __name__ == '__main__':
 
     # Player IDs Test Variables:
     # bron_id = '2544'
@@ -186,10 +129,13 @@ if __name__ == '__main__':
     # Test Game IDs
     # kobe_81_id = 0020500591 (2005-06)
 
-    player_id = '2544'
-    season_year = '2003-04'
-    game_id = '0020300014'
+    # game_id = '0020300014'
+    # player_id = '2544'
+    # season_year = '2003-04'
 
-    shot_data = get_shotchart_data(player_id, season_year, game_id)
-    plot_shortchart(shot_data)
+
+    # shot_data = get_shotchart_data(player_id, season_year, game_id)
+    # plot_shortchart(shot_data)
+
+
 
