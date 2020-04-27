@@ -6,7 +6,7 @@ import json
 import requests
 
 
-def get_player_info(first_name, last_name):
+def get_player_data(last_name, first_name):
     """Ger player id from Player Name"""
     player_index_url = 'https://stats.nba.com/js/data/ptsd/stats_ptsd.js'
     player_list = requests.get(player_index_url)
@@ -19,11 +19,6 @@ def get_player_info(first_name, last_name):
     players = data['data']['players']
     teams = data['data']['teams']
     data_date = data['generated']
-
-    # print(data_date)
-
-    # first_name = 'Kobe'
-    # last_name = 'Bryant'
 
     for player in players:
         # print(player[1])
@@ -41,11 +36,3 @@ def get_player_info(first_name, last_name):
 
     #
     return 0
-
-
-# if __name__ == '__main__':
-#     first_name = 'LeBron'
-#     last_name = 'James'
-#
-#     player_info = get_player_info(first_name, last_name)
-#     print(player_info)

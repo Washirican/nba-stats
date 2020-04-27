@@ -69,15 +69,16 @@ def get_player_gamelog(player_id, season_year, season_type):
         gamelog_dict[game['GAME_DATE'][:10]] = game
         gamelog_list.append(game)
 
+    gamelog_list.reverse()
     return gamelog_dict, gamelog_list
 
 
 # if __name__ == '__main__':
 #     player_id = '893'
-#     season_year = '1997-98'
+#     season_year = '1984-85'
 #     season_type = 'Regular Season'
 #
-    # gamelog_dict = get_player_gamelog(player_id, season_year, season_type)
+#     gamelog_dict, gamelog_list = get_player_gamelog(player_id, season_year, season_type)
 
 
 
