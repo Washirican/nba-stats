@@ -5,7 +5,7 @@
 import matplotlib.pyplot as plt
 
 
-def plot_shortchart(all_shots, player_name, team_name, matchup):
+def plot_shortchart(all_shots, player_name, team_name, matchup, game_date):
     # TODO D. Rodriguez 2020-04-22: Cleanup variable quantity, maybe read
     #  data directly from all_shots?
 
@@ -39,7 +39,7 @@ def plot_shortchart(all_shots, player_name, team_name, matchup):
     ax.scatter(x_miss, y_miss, marker='x', c='red')
     ax.scatter(x_made, y_made, facecolors='none', edgecolors='green')
 
-    plt.title(f'{player_name} ({team_name}), {matchup}')
+    plt.title(f'{player_name} ({team_name}), {matchup} {game_date}')
     ax.axes.xaxis.set_visible(False)
     ax.axes.yaxis.set_visible(False)
 
