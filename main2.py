@@ -253,7 +253,7 @@ def plot_shortchart(all_shots, player_name, team_name, matchup, game_date):
     ax.scatter(x_miss, y_miss, marker='x', c='red')
     ax.scatter(x_made, y_made, facecolors='none', edgecolors='green')
 
-    plt.title(f'{player_name} ({team_name}), {matchup} {game_date}')
+    plt.title(f'{player_name} ({team_name}), \n{matchup} {game_date}')
     ax.axes.xaxis.set_visible(False)
     ax.axes.yaxis.set_visible(False)
 
