@@ -197,7 +197,6 @@ def get_shotchart_data(player_id, season_year, game_id):
     # clean_response = clean_data(response)
     # all_shot_data = clean_response['Shot_Chart_Detail']
 
-    # TODO (D. Rodriguez 2020-04-26): Fix getting all shot data from API
     all_shot_data = json.loads(response.content.decode())['resultSets'][0]
 
     all_shot_data_list = []
@@ -284,8 +283,11 @@ if __name__ == '__main__':
                                                     season_year_user_input,
                                                     'Regular Season')
 
+    # TODO (D. Rodriguez, 2020-04-27): Print games in table format
+    game_count = 0
     for game in gamelog_list:
-        print(game['GAME_DATE'][:10], game['MATCHUP'], f"({game['PTS']} pts, "
+        game_count += 1
+        print(game_count, game['GAME_DATE'][:10], game['MATCHUP'], f"({game['PTS']} pts, "
                                                        f"on {game['FGM']}/"
                                                        f"{game['FGA']} "
                                                        f"shooting)")
