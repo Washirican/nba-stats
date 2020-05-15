@@ -216,7 +216,8 @@ if __name__ == '__main__':
     # TODO (D. Rodriguez 2020-05-14): Fix code sequence.
     player = Players(player_full_name)
 
-    player_current_team = Teams(player.current_team_id)
+    # Updates Player team-related attributes
+    # player_current_team = Teams(player.current_team_id)
 
     player.get_player_per_season_totals()
     player.get_player_seasons_played()
@@ -259,3 +260,8 @@ if __name__ == '__main__':
 
     plot_short_chart(all_shots, player_name, team_name, matchup, game_date, scoring_headline)
 
+    # TODO (D. Rodriguez 2020-05-15): Move this to a new module? function?
+    # Display teams played each season
+    # for key, value in player.season_totals.items():
+        # team = Teams(player.season_totals[key]["TEAM_ID"])
+        # print(f'{key}: {team.nickname}')
