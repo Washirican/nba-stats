@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------- #
 # D. Rodriguez, 2020-05-14
 # --------------------------------------------------------------------------- #
-"""Module to get player data"""
+"""Get player data by player ID"""
 
 import requests
 import json
@@ -27,10 +27,8 @@ class Players:
         'Cache-Control': 'no-cache',
         }
 
-    def __init__(self, player_last_name, player_first_name):
+    def __init__(self, player_name):
         """Constructor for Player"""
-        self.first_name = player_first_name
-        self.last_name = player_last_name
 
         # TODO (D. Rodriguez 2020-05-14): Move code to
         #  get_player_basic_info() method. Leave only parameter
@@ -38,8 +36,7 @@ class Players:
         #  Is this necessary?
 
         # Initialize variables to be set by code
-        self.full_name = f'{self.first_name} ' \
-                                f'{self.last_name}'
+        self.full_name = player_name
 
         self.seasons_played = []
         self.season_totals = {}
@@ -64,7 +61,7 @@ class Players:
         # TODO (D. Rodriguez 2020-05-14): Improve search performance.
         #  Implement binary search?
         for player in players:
-            if f'{self.last_name}, {self.first_name}' == player[1]:
+            if self.full_name == player[1]:
                 self.id = player[0]
                 self.rookie_season = player[3]
                 self.last_season = player[4]
