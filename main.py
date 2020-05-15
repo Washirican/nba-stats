@@ -26,7 +26,7 @@ HEADERS = {
 
 
 def get_player_data(player_name):
-    """Ger player id from Player Name"""
+    """Ger player id from Player Name (format: last_name, first_name)"""
     player_index_url = 'https://stats.nba.com/js/data/ptsd/stats_ptsd.js'
     player_list = requests.get(player_index_url)
 
@@ -262,8 +262,6 @@ def plot_shortchart(all_shots, player_name, team_name, matchup, game_date,
     plt.show()
 
 
-# -- Presentation (Input/Output) -- #
-# player_name_user_input = ''
 if __name__ == '__main__':
 
     player_name_user_input = input('Enter player name (Last, First): ')
