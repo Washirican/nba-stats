@@ -36,7 +36,8 @@ class Teams:
         # TODO (D. Rodriguez 2020-05-14): Implement error handling if
         #  Team ID is not found
 
-        # TODO (D. Rodriguez 2020-05-14): Move code to method
+        # TODO (D. Rodriguez 2020-05-14): Move code to method?
+
 
         response = requests.get(request_url, headers=Teams.__HEADERS,
                                 params=parameters)

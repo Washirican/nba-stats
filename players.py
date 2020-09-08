@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------- #
 # D. Rodriguez, 2020-05-14
 # --------------------------------------------------------------------------- #
-"""Get player data by player ID"""
+"""Get player data by player Full Name"""
 
 import requests
 import json
@@ -45,10 +45,10 @@ class Players:
         player_list = requests.get(player_index_url)
 
         # Cleanup string
-        player_data_str = player_list.content.decode()[17:-1]
+        player_data = json.loads(player_list.content.decode()[17:-1])
 
         # Turns string into dictionary
-        player_data = json.loads(player_data_str)
+        # player_data = json.loads(player_data_str)
 
         # Extracts data from dictionary
         players = player_data['data']['players']
@@ -111,6 +111,7 @@ class Players:
         # self.season_totals = {}
 
         for season in season_totals_values:
-            self.season_totals[season[1]] = dict(zip(season_totals_headers, season))
+            self.season_totals[season[1]] = dict(
+                    zip(season_totals_headers, season))
 
         # return self.season_totals
