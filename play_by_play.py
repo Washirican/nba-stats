@@ -25,26 +25,18 @@ HEADERS = {
 
 
 def get_play_by_play_data(game_id):
-    parameters = {'GameID': '0022400985',
+    game_id = '0022400985'
+    parameters = {'GameID': game_id,
                   'StartPeriod': 1,
                   'EndPeriod' : 4,
                   }
     endpoint = 'playbyplayv3'
     request_url = f'https://stats.nba.com/stats/{endpoint}?'
 
-    # request_url_2 ='https://stats.nba.com/stats/playbyplayv3?EndPeriod=1&GameID=0021700807&StartPeriod=1'
-
-    # endpoint = 'playbyplayv3'
-
-    # GameID = '0021700807'
-    # EndPeriod = '4'
-    # StartPeriod = '1'
-
-    # request_url = f'https://stats.nba.com/stats/{endpoint}?EndPeriod={EndPeriod}&GameID={GameID}&StartPeriod={StartPeriod}'
-
     response = requests.get(request_url, headers=HEADERS, params=urllib.parse.urlencode(parameters))
     raw_data = response.json()
-    print(f"Found {len(raw_data['game']['actions'])} game events") 
+
+    print(f"Found {len(raw_data['game']['actions'])} game events")
 
 
     return result
